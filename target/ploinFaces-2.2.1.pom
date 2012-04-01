@@ -23,10 +23,6 @@
 	<scm>
 	    <url>https://github.com/reiz/ploinFaces</url>
 	</scm>
-	<issueManagement>
-		<system>GitHub</system>
-		<url>https://github.com/reiz/ploinFaces/issues</url>
-	</issueManagement>
 	<developers>
 		<developer>
 			<id>r.reiz</id>

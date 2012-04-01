@@ -1,0 +1,844 @@
+<html>
+<head>
+<title>TestNG:  Command line test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Command line test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>114/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Sun Apr 01 11:55:47 PDT 2012</td>
+</tr>
+<tr><td>Total time:</td><td>0 seconds (614 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='3' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td width="30%"><b>Exception</b></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.addAttribute()'>addAttribute</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.addExcludeAuthoritys()'>addExcludeAuthoritys</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.addIgnoreViews()'>addIgnoreViews</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.addIncludeAuthoritys()'>addIncludeAuthoritys</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.addSubFlows()'>addSubFlows</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.addViews()'>addViews</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.BlockSavePhaseListenerTest.afterPhase()'>afterPhase</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener01Test.afterPhase()'>afterPhase</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener02Test.afterPhase()'>afterPhase</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener03Test.afterPhase()'>afterPhase</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener04Test.afterPhase()'>afterPhase</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener05Test.afterPhase()'>afterPhase</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener06Test.afterPhase()'>afterPhase</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener03Test.beforePhase1()'>beforePhase1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener02Test.beforePhase1()'>beforePhase1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener04Test.beforePhase1()'>beforePhase1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener01Test.beforePhase1()'>beforePhase1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener06Test.beforePhase1()'>beforePhase1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener05Test.beforePhase1()'>beforePhase1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener02Test.beforePhase2()'>beforePhase2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener01Test.beforePhase2()'>beforePhase2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener06Test.beforePhase2()'>beforePhase2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.checkEquals1()'>checkEquals1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.checkEquals2()'>checkEquals2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.checkEquals3()'>checkEquals3</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.checkEquals4()'>checkEquals4</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.checkEquals5()'>checkEquals5</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.checkEquals6()'>checkEquals6</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.checkEquals7()'>checkEquals7</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.checkEquals8()'>checkEquals8</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.checkHashCode1()'>checkHashCode1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.checkHashCode2()'>checkHashCode2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.checkHashCode3()'>checkHashCode3</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.containAttribute()'>containAttribute</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.containExcludeAuthoritys()'>containExcludeAuthoritys</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.containIncludeAuthoritys()'>containIncludeAuthoritys</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener01Test.generateId()'>generateId</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.getFlowById1()'>getFlowById1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.getFlowById2()'>getFlowById2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.getFlowById3()'>getFlowById3</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.getFlowById4()'>getFlowById4</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.getFlowById5()'>getFlowById5</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.BlockSavePhaseListenerTest.getPhaseId()'>getPhaseId</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener01Test.getPhaseId()'>getPhaseId</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener02Test.getPhaseId()'>getPhaseId</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener03Test.getPhaseId()'>getPhaseId</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener04Test.getPhaseId()'>getPhaseId</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener05Test.getPhaseId()'>getPhaseId</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener06Test.getPhaseId()'>getPhaseId</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener04Test.getterAndSetter()'>getterAndSetter</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener03Test.getterAndSetter()'>getterAndSetter</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener02Test.getterAndSetter()'>getterAndSetter</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener06Test.getterAndSetter()'>getterAndSetter</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener05Test.getterAndSetter()'>getterAndSetter</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.JsfPhaseListener01Test.getterAndSetter()'>getterAndSetter</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.phaselistener.BlockSavePhaseListenerTest.getterAndSetter()'>getterAndSetter</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForAccessDeniedPage()'>getterAndSetterForAccessDeniedPage</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForAfterFlowAction()'>getterAndSetterForAfterFlowAction</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForAfterLifecycleAction()'>getterAndSetterForAfterLifecycleAction</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForAppName()'>getterAndSetterForAppName</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForAttributes()'>getterAndSetterForAttributes</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForAuthoritySource()'>getterAndSetterForAuthoritySource</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForBeforeFlowAction()'>getterAndSetterForBeforeFlowAction</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForBeforeLifecycleAction()'>getterAndSetterForBeforeLifecycleAction</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForDisableUrlNavigation()'>getterAndSetterForDisableUrlNavigation</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForExcludeAuthoritys()'>getterAndSetterForExcludeAuthoritys</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForFlowId()'>getterAndSetterForFlowId</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForIgnoreViews()'>getterAndSetterForIgnoreViews</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForIncludeAuthoritys()'>getterAndSetterForIncludeAuthoritys</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForSubFlows()'>getterAndSetterForSubFlows</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.getterAndSetterForViews()'>getterAndSetterForViews</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewInFlowPathPeek1()'>isViewInFlowPathPeek1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewInFlowPathPeek2()'>isViewInFlowPathPeek2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewInFlowPathPeek3()'>isViewInFlowPathPeek3</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewInFlowPathPeek4()'>isViewInFlowPathPeek4</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewInFlowPathPeek5()'>isViewInFlowPathPeek5</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewInSet1()'>isViewInSet1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewInSet2()'>isViewInSet2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewInSet3()'>isViewInSet3</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewNotInSet1()'>isViewNotInSet1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewNotInSet2()'>isViewNotInSet2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewNotInSet3()'>isViewNotInSet3</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewNotInSet4()'>isViewNotInSet4</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewsInSubflows()'>isViewsInSubflows</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewsInSubflows2()'>isViewsInSubflows2</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewsInSubflows3()'>isViewsInSubflows3</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewsInSubflows4()'>isViewsInSubflows4</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewsInSubflows5()'>isViewsInSubflows5</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewsInSubflows6()'>isViewsInSubflows6</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.isViewsInSubflows7()'>isViewsInSubflows7</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.leaveFlowAction1()'>leaveFlowAction1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowControlTest.readFlows1()'>readFlows1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.stack.StackTest.stackTest()'>stackTest</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.EmailValidatorTest.validate0()'>validate0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.HtmlKickerTest.validate0()'>validate0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.NumberOnlyValidatorTest.validate0()'>validate0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.PlzValidatorTest.validate0()'>validate0</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.EmailValidatorTest.validate1()'>validate1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.HtmlKickerTest.validate1()'>validate1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.NumberOnlyValidatorTest.validate1()'>validate1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.PlzValidatorTest.validate1()'>validate1</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.EmailValidatorTest.validate2()'>validate2</td>
+<td>0</td>
+<td><div><pre>javax.faces.validator.ValidatorException: Validationerror. Please type in a valid e-mail-adress!
+	at org.ploin.web.faces.validator.EmailValidator.validate(EmailValidator.java:61)
+	at org.ploin.web.validator.EmailValidatorTest.validate2(EmailValidatorTest.java:94)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:60)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:153)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:111)
+	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
+	at $Proxy0.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:150)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1008714150", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1008714150'><pre>javax.faces.validator.ValidatorException: Validationerror. Please type in a valid e-mail-adress!
+	at org.ploin.web.faces.validator.EmailValidator.validate(EmailValidator.java:61)
+	at org.ploin.web.validator.EmailValidatorTest.validate2(EmailValidatorTest.java:94)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:607)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:517)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:669)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:956)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:110)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:877)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:842)
+	at org.testng.TestNG.run(TestNG.java:751)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:60)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:153)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:111)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
+	at $Proxy0.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:150)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
+</pre></div></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.HtmlKickerTest.validate2()'>validate2</td>
+<td>0</td>
+<td><div><pre>javax.faces.validator.ValidatorException: Validationerror. Please dont`t type in HTML-Tags or special signs like (&).
+	at org.ploin.web.faces.validator.HtmlKicker.validate(HtmlKicker.java:62)
+	at org.ploin.web.validator.HtmlKickerTest.validate2(HtmlKickerTest.java:93)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:60)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:153)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:111)
+	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
+	at $Proxy0.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:150)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1120194637", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1120194637'><pre>javax.faces.validator.ValidatorException: Validationerror. Please dont`t type in HTML-Tags or special signs like (&).
+	at org.ploin.web.faces.validator.HtmlKicker.validate(HtmlKicker.java:62)
+	at org.ploin.web.validator.HtmlKickerTest.validate2(HtmlKickerTest.java:93)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:607)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:517)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:669)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:956)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:110)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:877)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:842)
+	at org.testng.TestNG.run(TestNG.java:751)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:60)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:153)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:111)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
+	at $Proxy0.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:150)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
+</pre></div></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.NumberOnlyValidatorTest.validate2()'>validate2</td>
+<td>0</td>
+<td><div><pre>javax.faces.validator.ValidatorException: Validationerror. Please type in a just numbers!
+	at org.ploin.web.faces.validator.NumberOnlyValidator.validate(NumberOnlyValidator.java:65)
+	at org.ploin.web.validator.NumberOnlyValidatorTest.validate2(NumberOnlyValidatorTest.java:93)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:60)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:153)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:111)
+	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
+	at $Proxy0.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:150)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1036158690", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1036158690'><pre>javax.faces.validator.ValidatorException: Validationerror. Please type in a just numbers!
+	at org.ploin.web.faces.validator.NumberOnlyValidator.validate(NumberOnlyValidator.java:65)
+	at org.ploin.web.validator.NumberOnlyValidatorTest.validate2(NumberOnlyValidatorTest.java:93)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:607)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:517)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:669)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:956)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:110)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:877)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:842)
+	at org.testng.TestNG.run(TestNG.java:751)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:60)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:153)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:111)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
+	at $Proxy0.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:150)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
+</pre></div></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.PlzValidatorTest.validate2()'>validate2</td>
+<td>0</td>
+<td><div><pre>javax.faces.validator.ValidatorException: Validationerror. Please type in a valid PLZ!
+	at org.ploin.web.faces.validator.PlzValidator.validate(PlzValidator.java:63)
+	at org.ploin.web.validator.PlzValidatorTest.validate2(PlzValidatorTest.java:95)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:60)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:153)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:111)
+	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
+	at $Proxy0.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:150)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1388314661", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1388314661'><pre>javax.faces.validator.ValidatorException: Validationerror. Please type in a valid PLZ!
+	at org.ploin.web.faces.validator.PlzValidator.validate(PlzValidator.java:63)
+	at org.ploin.web.validator.PlzValidatorTest.validate2(PlzValidatorTest.java:95)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.testng.internal.MethodHelper.invokeMethod(MethodHelper.java:607)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:517)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:669)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:956)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:110)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:759)
+	at org.testng.TestRunner.privateRun(TestRunner.java:592)
+	at org.testng.TestRunner.run(TestRunner.java:486)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:327)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:299)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:204)
+	at org.testng.TestNG.createAndRunSuiteRunners(TestNG.java:877)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:842)
+	at org.testng.TestNG.run(TestNG.java:751)
+	at org.apache.maven.surefire.testng.TestNGExecutor.run(TestNGExecutor.java:60)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.executeMulti(TestNGDirectoryTestSuite.java:153)
+	at org.apache.maven.surefire.testng.TestNGDirectoryTestSuite.execute(TestNGDirectoryTestSuite.java:99)
+	at org.apache.maven.surefire.testng.TestNGProvider.invoke(TestNGProvider.java:111)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
+	at $Proxy0.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:150)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:91)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
+</pre></div></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.NumberOnlyValidatorTest.validate3()'>validate3</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.PlzValidatorTest.validate3()'>validate3</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.NumberOnlyValidatorTest.validate4()'>validate4</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.PlzValidatorTest.validate4()'>validate4</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.NumberOnlyValidatorTest.validate5()'>validate5</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.PlzValidatorTest.validate5()'>validate5</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.NumberOnlyValidatorTest.validate6()'>validate6</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.validator.PlzValidatorTest.validate6()'>validate6</td>
+<td>0</td>
+<td></td>
+</tr>
+<tr>
+<td title='org.ploin.web.flow.FlowTest.viewContains()'>viewContains</td>
+<td>0</td>
+<td></td>
+</tr>
+</table><p>
+</body>
+</html>
