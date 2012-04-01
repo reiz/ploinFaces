@@ -1,0 +1,44 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<modelVersion>4.0.0</modelVersion>
+<groupId>org.ploin.web</groupId>
+<artifactId>ploinFaces</artifactId>
+<version>2.0</version>
+<name>ploinFaces</name>
+<url>http://www.ploinfaces.org</url>
+<description>The spice in JSF</description>
+
+<dependencies>
+
+	<dependency>
+		<groupId>commons-logging</groupId>
+		<artifactId>commons-logging</artifactId>
+		<version>1.1</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>commons-logging</groupId>
+		<artifactId>commons-logging-api</artifactId>
+		<version>1.1</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>log4j</groupId>
+		<artifactId>log4j</artifactId>
+		<version>1.2.15</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>dom4j</groupId>
+		<artifactId>dom4j</artifactId>
+		<version>1.6.1</version>
+		<scope>compile</scope>
+	</dependency>
+	<dependency>
+		<groupId>jaxen</groupId>
+		<artifactId>jaxen</artifactId>
+		<version>1.1.1</version>
+		<scope>compile</scope>
+	</dependency>
+
+</dependencies>
+</project>

@@ -1,0 +1,56 @@
+<document>
+  <properties>
+    <author email="reiz@ploin.de">Robert Reiz</author>
+    <title>ploinFaces IDE integration</title>
+  </properties>
+  <head>
+
+  </head>
+  <body>
+	<section name="IDE integration">
+		<p>
+			<a href="#eclipse">Eclipse</a><br/>
+			<a href="#idea">intelliJ IDEA</a><br/>
+		<br/>
+		<br/>
+
+			Here we describe how you can integrate ploinFaces with your IDE to
+			get an autosuggestion/autocomplete for the ploinFlows.xml.
+		</p>
+		<a name="eclipse" /><subsection name="Eclipse">
+			<p>If your ploinFlows.xml file starts with the following lines of code eclipse offer you
+				out of the box autosuggestion. </p>
+			<source>
+&lt;flows xmlns="http://www.ploinfaces.org/schema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.ploinfaces.org/schema http://www.ploinfaces.org/schema/ploinFlows.xml.xsd"&gt;
+            </source>
+			<p>
+				<img src="images/ploinFacesEclipse.jpg" alt="ploinFaces eclipse integration" />
+			</p>
+		</subsection>
+		<a name="idea"/><subsection name="intelliJ IDEA">
+			<p>In IDEA you will perhaps see something like this.<br/>
+				<br/>
+				<img src="images/ploinFacesIdea1.jpg" alt="ploinFaces IDEA integration" /><br/>
+				<br/>
+				In this case you should donwload the xml schema manualy and put it in your root src folder.
+				You can download the xml schema <a href="schema/ploinFlows.xml.xsd">here</a>. The schema
+				is also included in the ploinFaces.jar file. You should place it in the same directory where your
+				ploinFlows.xml is placed. <br/>
+				After you have placed the schema in the right directory you have to configure IDEA.<br/>
+				<br/>
+				<img src="images/ploinFacesIdea2.jpg" alt="ploinFaces IDEA integration" /><br/>
+				<br/>
+				Here you can add a mapping for the namespace. Just type in the path to the xml schema.<br/>
+				<br/>
+				<img src="images/ploinFacesIdea3.jpg" alt="ploinFaces IDEA integration" /><br/>
+				<br/>
+				After this two steps you have the same autosuggestion like in eclipse. <br/>
+				<br/>
+				<img src="images/ploinFacesIdea4.jpg" alt="ploinFaces IDEA integration" /><br/>
+			</p>
+		</subsection>
+	</section>
+	</body>
+</document>

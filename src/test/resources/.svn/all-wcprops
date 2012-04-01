@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/ploinFaces/!svn/ver/59/trunk/src/test/resources
+END
+messages.properties
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/ploinFaces/!svn/ver/58/trunk/src/test/resources/messages.properties
+END
+messages_en.properties
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/ploinFaces/!svn/ver/58/trunk/src/test/resources/messages_en.properties
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/ploinFaces/!svn/ver/58/trunk/src/test/resources/log4j.properties
+END
+ploinFlows.xml
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/ploinFaces/!svn/ver/59/trunk/src/test/resources/ploinFlows.xml
+END

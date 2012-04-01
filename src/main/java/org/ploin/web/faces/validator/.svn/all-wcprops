@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/ploinFaces/!svn/ver/91/trunk/src/main/java/org/ploin/web/faces/validator
+END
+NumberOnlyValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/ploinFaces/!svn/ver/91/trunk/src/main/java/org/ploin/web/faces/validator/NumberOnlyValidator.java
+END
+PloinJsfValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ploinFaces/!svn/ver/91/trunk/src/main/java/org/ploin/web/faces/validator/PloinJsfValidator.java
+END
+PlzValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/ploinFaces/!svn/ver/91/trunk/src/main/java/org/ploin/web/faces/validator/PlzValidator.java
+END
+EmailValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/ploinFaces/!svn/ver/91/trunk/src/main/java/org/ploin/web/faces/validator/EmailValidator.java
+END
+HtmlKicker.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ploinFaces/!svn/ver/91/trunk/src/main/java/org/ploin/web/faces/validator/HtmlKicker.java
+END
+NumberValidator.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/ploinFaces/!svn/ver/91/trunk/src/main/java/org/ploin/web/faces/validator/NumberValidator.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/ploinFaces/!svn/ver/22/trunk/src/main/java/org/ploin/web/faces/validator/package.html
+END

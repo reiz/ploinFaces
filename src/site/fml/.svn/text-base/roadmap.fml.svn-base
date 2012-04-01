@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<faqs title="Roadmap" toplink="false">
+
+  <part id="roadmap">
+    <title>Roadmap</title>    
+
+	<faq id="whats-bar">
+      <question>
+        Flow-init
+      </question>
+      <answer>
+        <p>It should be possible to call a init method before you step into a flow, like the
+			"afterLifecycleAction" (see reference guide). This is a gread idea by Marius Kryzka.</p>
+      </answer>
+    </faq>
+
+	<faq id="whats-bar">
+      <question>
+        Continuous integration
+      </question>
+      <answer>
+        <p>We want install a continuous integration	process to build SNAPSHOTs every night and run
+			automatic tests.</p>
+      </answer>
+    </faq>	
+
+  </part>  
+
+</faqs>

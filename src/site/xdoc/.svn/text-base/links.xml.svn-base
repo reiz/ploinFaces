@@ -1,0 +1,28 @@
+
+<document>
+  <properties>
+    <author email="reiz@ploin.de">Robert Reiz</author>
+    <title>Links</title>
+  </properties>
+  <head>
+
+  </head>
+  <body>
+
+	<section name="Links">
+		<p>
+			Here are some useful Links for the work with JSF.<br/>
+			<br/>
+			<a href="http://www.jsfmatrix.net/">http://www.jsfmatrix.net/</a><br/>
+			<br/>
+			<a href="http://myfaces.apache.org/">http://myfaces.apache.org/</a><br/>
+			<br/>
+			<a href="http://www.icefaces.org/">http://www.icefaces.org/</a><br/>
+			<br/>
+			<a href="http://www.jboss.org/jbossrichfaces/">http://www.jboss.org/jbossrichfaces/</a><br/>
+			<br/>
+		</p>
+	</section>
+
+  </body>
+</document>

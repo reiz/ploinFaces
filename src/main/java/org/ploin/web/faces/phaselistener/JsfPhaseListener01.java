@@ -1,0 +1,135 @@
+/**
+ * Copyright [2008] [PLOIN GmbH -> http://www.ploin.de]
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ */
+package org.ploin.web.faces.phaselistener;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.ploin.web.flow.Flow;
+import org.ploin.web.flow.FlowControl;
+
+import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseEvent;
+import javax.faces.event.PhaseId;
+import javax.faces.event.PhaseListener;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.ploin.web.flow.FlowControl.*;
+
+/**
+ * PhaseListener for Phase 1. 
+ * <p/>
+ * $LastChangedBy: r.reiz $<br>
+ * $Revision: 122 $<br>
+ * $Date: 2010-04-22 12:28:16 +0200 (Thu, 22 Apr 2010) $<br>
+ */
+public class JsfPhaseListener01 implements PhaseListener {
+
+
+	private static final long serialVersionUID = -6864584076253155886L;
+	private Log log = LogFactory.getLog(JsfPhaseListener01.class);
+	private List<Flow> flows = new ArrayList<Flow>();
+	private FacesContext f = null;
+
+
+	/**
+	 *
+	 * Before phase1 the framework look for "ploinFlows" in the application
+	 * scope. If there is no "ploinFlows" in the application scope, the
+	 * framework reade the flows from the file "ploinFlows.xml" and
+	 * store it in the application scope.<br/>
+	 * <br/>
+	 * After the flows are stored in the application scope, the framework
+	 * try to get the fromViewId! If it is not possible to get the
+	 * viewId, because it is a redirect or the first request to the
+	 * application, the fromViewId keeps empty "", in this phase.
+	 * In phase 2 the framework try again to get the viewId.
+	 *
+	 * @param event
+	 */
+	public void beforePhase(PhaseEvent event) {
+		log.info("beforePhase " + getPhaseId());
+		FacesContext facesContext = null;
+		if (f != null){
+			facesContext = f;
+		} else {
+			facesContext = FacesContext.getCurrentInstance();
+		}
+		HttpSession session = (HttpSession)facesContext.getExternalContext().getSession(true);
+		session.setAttribute(LIFECYCLE_ID, generateID());
+		Long time = System.currentTimeMillis();
+		session.setAttribute(PLOIN_FACES_TIME, time);
+		session.setAttribute(JSF_PHASE, 1);
+		Object object = facesContext.getExternalContext().getApplicationMap().get(PLOIN_FLOWS);
+		if (object != null && object instanceof List){
+			flows = (List)object;
+		}
+		if (flows == null || 0 == flows.size()){
+			log.debug("read flows from ploinFlows.xml");
+			FlowControl flowControl = new FlowControl();
+			flows = flowControl.readFlows();
+		}
+		if (flows != null && flows.size() > 0){
+			facesContext.getExternalContext().getApplicationMap().put(PLOIN_FLOWS, flows);
+		}
+
+		String fromViewId = "";
+		try {
+			fromViewId = facesContext.getViewRoot().getViewId();
+		} catch (Exception e) {
+			log.debug(" get fromViewId secondWay, from last lifecycle ");
+			String fromVid = (String)session.getAttribute("ploinFacesFromViewId");
+			if (fromVid != null && !"".equalsIgnoreCase(fromVid)){
+				fromViewId = fromVid;
+			}
+		}
+		if (fromViewId != null && !"".equalsIgnoreCase(fromViewId)) {
+			log.debug("fromViewId " + fromViewId);
+			session.setAttribute("ploinFacesFromViewId", fromViewId);
+		} else {
+			log.debug("fromViewId is empty");
+		}
+	}
+
+
+	public void afterPhase(PhaseEvent event) {
+		log.info("afterPhase " + getPhaseId());
+	}
+
+
+	public PhaseId getPhaseId() {
+		return PhaseId.RESTORE_VIEW;
+	}
+
+
+	public Long generateID(){
+		double d = Math.random();
+		double p = d * 1000000;
+		String id = String.valueOf(p);
+		id = id.replace(".", "");
+		return Long.valueOf(id);
+	}
+
+	public FacesContext getF() {
+		return f;
+	}
+
+	public void setF(FacesContext f) {
+		this.f = f;
+	}
+}

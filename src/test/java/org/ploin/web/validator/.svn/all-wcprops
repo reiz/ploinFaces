@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/ploinFaces/!svn/ver/73/trunk/src/test/java/org/ploin/web/validator
+END
+NumberOnlyValidatorTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/ploinFaces/!svn/ver/73/trunk/src/test/java/org/ploin/web/validator/NumberOnlyValidatorTest.java
+END
+PlzValidatorTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/ploinFaces/!svn/ver/73/trunk/src/test/java/org/ploin/web/validator/PlzValidatorTest.java
+END
+EmailValidatorTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/ploinFaces/!svn/ver/73/trunk/src/test/java/org/ploin/web/validator/EmailValidatorTest.java
+END
+HtmlKickerTest.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/ploinFaces/!svn/ver/73/trunk/src/test/java/org/ploin/web/validator/HtmlKickerTest.java
+END

@@ -1,0 +1,262 @@
+/**
+ * Copyright [2008] [PLOIN GmbH -> http://www.ploin.de]
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ */
+package org.ploin.web.faces.phaselistener;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.ploin.web.flow.Flow;
+import org.ploin.web.flow.FlowControl;
+
+import javax.faces.application.ViewHandler;
+import javax.faces.component.UIViewRoot;
+import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseEvent;
+import javax.faces.event.PhaseId;
+import javax.faces.event.PhaseListener;
+import javax.servlet.http.HttpSession;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static org.ploin.web.flow.FlowControl.*;
+
+/**
+ * PhaseListener for Phase 6. 
+ * <p/>
+ * $LastChangedBy$<br>
+ * $Revision$<br>
+ * $Date$<br>
+ */
+public class JsfPhaseListener06 implements PhaseListener {
+
+	private static final long serialVersionUID = -7082297612107349222L;
+	private static Log log = LogFactory.getLog(JsfPhaseListener06.class);
+	private FacesContext facesContextTest = null;
+	private FlowControl flowControl = new FlowControl();
+
+
+	/**
+	 * before phase 6 the framework looks for authoritys. If the destination viewID is
+	 * defined in a flow and the flow have includeAuthoritys or excludeAuthoritys, then
+	 * the framework fetch a value from the AuthoritySource and look if the
+	 * user/request is authorized to entry the view. If the user/request is not
+	 * authorized to entry the view, ploinFaces set the value from the "accessDeniedPage"
+	 * (ploinFlows.xml) as current viewId. If "accessDeniedPage" is not defined the user/request
+	 * will stay on the current view (fromViewId).
+	 *
+	 * @param event
+	 */
+	public void beforePhase(PhaseEvent event) {
+		log.info("beforePhase " + getPhaseId());
+		FacesContext facesContext = null;
+		if (facesContextTest != null){
+			facesContext = facesContextTest;
+		} else {
+			facesContext = FacesContext.getCurrentInstance();
+		}
+		HttpSession session = (HttpSession)facesContext.getExternalContext().getSession(true);
+		session.setAttribute("jsfPhase", 6);
+
+		String fromViewId = (String)session.getAttribute("ploinFacesFromViewId");
+		String toViewId = null;
+		if (facesContext.getViewRoot() != null){
+			toViewId = facesContext.getViewRoot().getViewId();
+		}
+
+		List<Flow> flows;
+		Object object = facesContext.getExternalContext().getApplicationMap().get("ploinFlows");
+		if (object != null && object instanceof List){
+			flows = (List)object;
+			if (flows.size() > 0){
+				FlowControl flowControl = new FlowControl();
+				for (Flow flow: flows){
+					if (!flowControl.isViewInSet(flow.getIgnoreViews(), toViewId)){
+						if (flowControl.isViewInSet(flow.getViews(), toViewId) &&
+							flow.getAuthoritySource() != null &&
+							(flow.getExcludeAuthoritys().size() > 0 || flow.getIncludeAuthoritys().size() > 0)){
+							try {
+								Object as = facesContext.getApplication().createValueBinding(flow.getAuthoritySource()).getValue(facesContext);
+								if (as instanceof String){
+									String authS = (String)as;
+									if ((flow.getIncludeAuthoritys().size() > 0 && !flow.includeContains(authS)) ||
+										(flow.getExcludeAuthoritys().size() > 0 && flow.excludeContains(authS) ) ){
+										ViewHandler handler = facesContext.getApplication().getViewHandler();
+										String destViewId;
+										if (flow.getAccessDeniedPage() != null &&
+											!"".equalsIgnoreCase(flow.getAccessDeniedPage())){
+											destViewId = flow.getAccessDeniedPage();
+											log.debug("Access denied for " + toViewId + "! go to the defined accessDeniedPage " + destViewId);
+										} else {
+											destViewId = fromViewId;
+											log.debug("Access denied for " + toViewId + "! There is no accessDeniedPage defined. Stay on " + destViewId);
+										}
+										UIViewRoot viewRoot = handler.createView(FacesContext.getCurrentInstance(),
+											destViewId);
+										facesContext.setViewRoot(viewRoot);
+										facesContext.renderResponse();
+									}
+								}
+							} catch (Exception e) {
+								log.error("error in beforePhase securityCode ", e);
+							}
+						}
+					} else {
+						log.debug(" view is in ignoreSet " + toViewId);
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * after phase 6 the framework checks if you leave a flow. If you do,
+	 * than the framework will remove all attributes from session who are
+	 * defined in the leaved flow.
+	 *
+	 * @param event
+	 */
+	public void afterPhase(PhaseEvent event) {
+		log.info("afterPhase " + getPhaseId());
+		FacesContext facesContext = null;
+		if (facesContextTest != null){
+			facesContext = facesContextTest;
+		} else {
+			facesContext = FacesContext.getCurrentInstance();
+		}
+		HttpSession session = (HttpSession)facesContext.getExternalContext().getSession(true);
+		session.removeAttribute(JSF_PHASE);
+		session.removeAttribute(LIFECYCLE_ID);
+		Long time = (Long)session.getAttribute(PLOIN_FACES_TIME);
+		session.removeAttribute(PLOIN_FACES_TIME);
+		String fromViewId = (String)session.getAttribute(PLOIN_FACES_FROM_VIEW_ID);
+		String toViewId = fromViewId;
+		UIViewRoot viewRoot = facesContext.getViewRoot();
+		if (viewRoot != null){
+			toViewId = facesContext.getViewRoot().getViewId();
+		}
+		session.setAttribute(PLOIN_FACES_FROM_VIEW_ID, toViewId);
+		log.debug("go to viewId " + toViewId);
+		List<Flow> flows;
+		Object object = facesContext.getExternalContext().getApplicationMap().get(PLOIN_FLOWS);
+		if (object == null || !(object instanceof List)){
+			logTime(time);
+			return ;
+		}
+		flows = (List)object;
+		if (flows.size() == 0){
+			logTime(time);
+			return ;
+		}
+		for (Flow flow: flows){
+			if (flowControl.isViewInSet(flow.getIgnoreViews(), toViewId)){
+				log.debug(" view is in ignoreSet " + toViewId);
+				break;
+			} else if (flowControl.isStayInFlow(flow.getViews(), fromViewId, toViewId)){
+				stayInFlow(flow, facesContext);
+				// No break! There could be a second flowDefinition with other managedBeans and views.
+			} else if (flowControl.isLeavingFlow(flow.getViews(), fromViewId, toViewId)) {
+				processLeavingFlow(facesContext, session, flows, flow, fromViewId, toViewId);
+				// No break! There could be a second flowDefinition with other managedBeans and views.
+			}
+		}
+		logTime(time);
+	}
+
+	public void logTime(Long time){
+		log.info(".");
+		if (time != null){
+			long t2 = System.currentTimeMillis();
+			long t3 = t2 - time;
+			log.info("from beforePhase1 to afterPhase6: " + t3 + "ms");
+		}
+	}
+
+	public Set<String> getFlowPath(HttpSession session){
+		Set<String> flowPath = (Set<String>)session.getAttribute(PLOIN_FACES_FLOW_PATH);
+		if (flowPath == null) flowPath = new HashSet<String>();
+		return flowPath;
+	}
+
+	public void stayInFlow(Flow flow, FacesContext fc){
+		log.debug("stay in flow with id: " + flow.getFlowId());
+		String action = flow.getAfterLifecycleAction();
+		if (action != null){
+			log.debug(" execute afterLifecycleAction " + action);
+			fc.getApplication().createValueBinding(action).getValue(fc);
+		}
+	}
+
+	/**
+	 *
+	 * @param fc - the facesContext
+	 * @param session - HttpSession
+	 * @param flows - all flows defined in the ploinFlows.xml
+	 * @param flow - the leaving flow
+	 * @param fromViewId
+	 * @param toViewId
+	 */
+	public void processLeavingFlow(FacesContext fc, HttpSession session, List<Flow> flows, Flow flow, String fromViewId, String toViewId){
+		Set<String> flowPath = getFlowPath(session);
+		if (flowControl.isViewInSubFlows(flows, flow, toViewId)){
+			entrySubFlow(flowPath, flow, session);
+		} else if (flowControl.isViewInFlowPath(flows, flowPath, toViewId)) {
+			leaveSubFlowAndReturnToParentFlow(flows, flowPath, toViewId, flow, session, fc);
+		} else {
+			leaveFlow(flowPath, fc, session, flow, flows);
+		}
+	}
+
+	private void entrySubFlow(Set<String> flowPath, Flow flow, HttpSession session){
+		log.debug("leaving flow and entry subFlow ");
+		flowPath.add(flow.getFlowId());
+		session.setAttribute(PLOIN_FACES_FLOW_PATH, flowPath);
+	}
+
+	private void leaveSubFlowAndReturnToParentFlow(List<Flow> flows, Set<String> flowPath, String toViewId, Flow flow, HttpSession session, FacesContext fc){
+		String flowIdInFlowPath = flowControl.getFlowIdForViewInFlowPath(flows, flowPath, toViewId);
+		log.debug("leaving flow with id: "+ flow.getFlowId() +" and go back to parent flow: " + flowIdInFlowPath);
+		flowControl.leaveFlow(flow, fc, session);
+		flowPath.remove(flow.getFlowId());
+		if (flowPath.size() == 0){
+			session.removeAttribute(PLOIN_FACES_FLOW_PATH);
+		} else {
+			session.setAttribute(PLOIN_FACES_FLOW_PATH, flowPath);
+		}
+	}
+
+	private void leaveFlow(Set<String> flowPath, FacesContext fc, HttpSession session, Flow flow, List<Flow> flows){
+		flowControl.leaveFlow(flow, fc, session);
+		log.debug("leaving flow: " + flow.getFlowId());
+		for (String flowId: flowPath){
+			Flow fl = flowControl.getFlowById(flowId, flows);
+			flowControl.leaveFlow(fl, fc, session);
+			log.debug(" - leaving subflow: " + flowId);
+		}
+	}
+
+	public PhaseId getPhaseId() {
+		return PhaseId.RENDER_RESPONSE;
+	}
+
+	public FacesContext getFacesContextTest() {
+		return facesContextTest;
+	}
+
+	public void setFacesContextTest(FacesContext facesContextTest) {
+		this.facesContextTest = facesContextTest;
+	}
+}

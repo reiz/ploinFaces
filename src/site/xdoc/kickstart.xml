@@ -1,0 +1,263 @@
+
+<document>
+  <properties>
+    <author email="reiz@ploin.de">Robert Reiz</author>
+    <title>ploinFaces KickStart</title>
+  </properties>
+  <head>
+
+  </head>
+  <body>
+
+	<section name="KickStart">
+		<p>
+			With ploinFaces you can define flows for your JSF-Application. A flow has
+			several views (xhtml or JSP or something different) and attributes (ManagedBeans).
+			If you leave a flow, the framework removes the attributes from the session.
+			It works with the standard http-session scope. You need no special conversation scope.
+		</p>
+	</section>
+	<subsection name="Dependencys">
+        <p>
+			At a minimum, to use ploinFaces you need:<br/>
+			<ul>
+				<li>log4j-1.2.13.jar</li>
+				<li>commons-logging-api-1.1.jar</li>
+				<li>commons-logging-1.1.jar </li>
+				<li>jsf-api.jar OR myfaces-api.jar </li>
+				<li>jsf-impl.jar OR myfaces-impl.jar </li>
+				<li>servlet-api.jar </li>
+				<li>dom4j-1.6.1.jar </li>
+				<li>jaxen-1.1.1.jar </li>
+			</ul>
+			If you have set up a JSF-App. this APIs should already been in your Classpath. 
+		</p>
+	</subsection>
+	<subsection name="Download">
+		<p>
+			Download the ploinFaces.jar from sourceForge and add it to your Classpath. <br/>
+			<br/>
+			<a href="http://sourceforge.net/project/showfiles.php?group_id=228979">http://sourceforge.net/project/showfiles.php?group_id=228979</a> 
+		</p>
+	</subsection>
+	<subsection name="Configuration">
+		<p>
+			To set up the Framework you have to add the BackNavigationHandler from ploinFaces to your faces-config.xml.
+		</p>
+		<div class="blogXml">
+<pre>
+<font color="#0000aa">&lt;</font>
+<font color="#0000ff">application</font>
+<font color="#0000aa">&gt;</font><br/>
+
+  <font color="#0000aa">  &lt;</font>
+  <font color="#0000ff">system-event-listener</font>
+  <font color="#0000aa">&gt;</font><br/>
+
+    <font color="#0000aa">    &lt;</font>
+    <font color="#0000ff">system-event-listener-class</font>
+    <font color="#0000aa">&gt;</font>
+       org.ploin.web.faces.core.PhaseListenerInstallationListener
+    <font color="#0000aa">&lt;</font>
+    <font color="#0000ff">/system-event-listener-class</font>
+    <font color="#0000aa">&gt;</font><br/>
+
+    <font color="#0000aa">    &lt;</font>
+    <font color="#0000ff">system-event-class</font>
+    <font color="#0000aa">&gt;</font>
+       javax.faces.event.PostConstructApplicationEvent
+    <font color="#0000aa">&lt;</font>
+    <font color="#0000ff">/system-event-class</font>
+    <font color="#0000aa">&gt;</font><br/>
+
+  <font color="#0000aa">  &lt;</font>
+  <font color="#0000ff">/system-event-listener</font>
+  <font color="#0000aa">&gt;</font><br/>
+
+  <font color="#0000aa">  &lt;</font>
+  <font color="#0000ff">navigation-handler</font>
+  <font color="#0000aa">&gt;</font>
+    org.ploin.web.faces.core.BackNavigationHandler
+  <font color="#0000aa">&lt;</font>
+  <font color="#0000ff">/navigation-handler</font>
+  <font color="#0000aa">&gt;</font><br/>
+
+<font color="#0000aa">&lt;</font>
+<font color="#0000ff">/application</font>
+<font color="#0000aa">&gt;</font>
+</pre>
+</div>
+	</subsection>
+	<subsection name="Bean-Definition">
+		<p>
+			The managedBean you are using in a flow, should be in the session scope.
+			PloinFaces is not responsible for the cration of the beans. For the creation
+			and managing of your managedBeans you can use the standard JSF-Bean-Container
+			configured in the faces-config.xml.	
+		</p>
+		<source>
+<div class="blogXml">
+<pre>
+
+<font color="#0000aa">    &lt;</font>
+<font color="#0000ff">managed-bean</font>
+<font color="#0000aa">&gt;</font><br/>
+
+  <font color="#0000aa">      &lt;</font>
+  <font color="#0000ff">managed-bean-name</font>
+  <font color="#0000aa">&gt;</font>logInOutBean<font color="#0000aa">&lt;</font><font color="#0000ff">/managed-bean-name</font><font color="#0000aa">&gt;</font><br/>
+
+  <font color="#0000aa">      &lt;</font>
+  <font color="#0000ff">managed-bean-class</font>
+  <font color="#0000aa">&gt;</font>org.company.project.java.gui.model.LogInOutBean<font color="#0000aa">&lt;</font><font color="#0000ff">/managed-bean-class</font>
+  <font color="#0000aa">&gt;</font><br/>
+
+  <font color="#0000aa">      &lt;</font>
+  <font color="#0000ff">managed-bean-scope</font>
+  <font color="#0000aa">&gt;</font>session<font color="#0000aa">&lt;</font><font color="#0000ff">/managed-bean-scope</font>
+  <font color="#0000aa">&gt;</font><br/>
+
+<font color="#0000aa">    &lt;</font>
+<font color="#0000ff">/managed-bean</font>
+<font color="#0000aa">&gt;</font><br/>
+
+</pre>
+</div>
+	</source>
+	</subsection>
+	<subsection name="Flow-Definition">
+		<p>
+			ploinFaces expects the flow definition in a file "ploinFlows.xml" in your src-folder,
+			where normaly your "*.java" files, hibernate.properties and log4j.properties are
+			placed, too. Here is an example for a flow with three pages. The Managed-Bean
+			"logInOutBean" has session scope.
+		</p>
+		<source>
+<div class="blogXml">
+<pre>
+<font color="#0000aa">&lt;</font>
+<font color="#0000ff">flows </font>
+<font color="red">xmlns</font>=<font color="green">"http://www.ploinfaces.org/schema"</font><br/>
+	    <font color="red"> xmlns:xsi</font>=<font color="green">"http://www.w3.org/2001/XMLSchema-instance"</font><br/>
+	    <font color="red"> xsi:schemaLocation</font>=<font color="green">"http://www.ploinfaces.org/schema http://www.ploinfaces.org/schema/ploinFlows_1.4.xml.xsd"</font><font color="#0000aa">&gt;</font><br/>
+
+  <font color="#0000aa">  &lt;</font>
+  <font color="#0000ff">flow</font><font color="red"> id</font>=<font color="green">"loginFlow"</font>
+
+    <font color="#0000aa">&gt;</font><br/>
+
+    <font color="#0000aa">    &lt;</font>
+    <font color="#0000ff">views</font>
+    <font color="#0000aa">&gt;</font><br/>
+
+      <font color="#0000aa">      &lt;</font>
+      <font color="#0000ff">view</font>
+      <font color="#0000aa">&gt;</font>/login.xhtml<font color="#0000aa">&lt;</font><font color="#0000ff">/view</font><font color="#0000aa">&gt;</font><br/>
+
+      <font color="#0000aa">      &lt;</font>
+      <font color="#0000ff">view</font>
+	  <font color="#0000aa">&gt;</font>/page/help/agbLogin.xhtml<font color="#0000aa">&lt;</font><font color="#0000ff">/view</font>
+      <font color="#0000aa">&gt;</font><br/>
+
+      <font color="#0000aa">      &lt;</font>
+      <font color="#0000ff">view</font>
+      <font color="#0000aa">&gt;</font>/page/help/haftungLogin.xhtml<font color="#0000aa">&lt;</font><font color="#0000ff">/view</font>
+      <font color="#0000aa">&gt;</font><br/>
+
+    <font color="#0000aa">    &lt;</font>
+    <font color="#0000ff">/views</font>
+    <font color="#0000aa">&gt;</font><br/>
+
+    <font color="#0000aa">    &lt;</font>
+    <font color="#0000ff">attributes</font>
+    <font color="#0000aa">&gt;</font><br/>
+
+      <font color="#0000aa">      &lt;</font>
+      <font color="#0000ff">attribute</font>
+      <font color="#0000aa">&gt;</font>logInOutBean<font color="#0000aa">&lt;</font><font color="#0000ff">/attribute</font>
+      <font color="#0000aa">&gt;</font><br/>
+
+    <font color="#0000aa">    &lt;</font>
+    <font color="#0000ff">/attributes</font>
+    <font color="#0000aa">&gt;</font><br/>
+
+  <font color="#0000aa">  &lt;</font>
+  <font color="#0000ff">/flow</font>
+  <font color="#0000aa">&gt;</font><br/>
+
+<font color="#0000aa">&lt;</font>
+<font color="#0000ff">/flows</font>
+<font color="#0000aa">&gt;</font>
+</pre>
+</div>
+	</source>
+		<p>
+			If you leave the flow, ploinFaces removes the logInOutBean from the session.
+			Furthermore you can use java-regex for the views. Here is the next example. 
+		</p>
+		<source>
+<div class="blogXml">
+<pre>
+<font color="#0000aa">&lt;</font>
+<font color="#0000ff">flows </font>
+<font color="red">xmlns</font>=<font color="green">"http://www.ploinfaces.org/schema"</font><br/>
+	    <font color="red"> xmlns:xsi</font>=<font color="green">"http://www.w3.org/2001/XMLSchema-instance"</font><br/>
+	    <font color="red"> xsi:schemaLocation</font>=<font color="green">"http://www.ploinfaces.org/schema http://www.ploinfaces.org/schema/ploinFlows_1.4.xml.xsd"</font><font color="#0000aa">&gt;</font><br/>
+
+  <font color="#0000aa">  &lt;</font>
+  <font color="#0000ff">flow</font><font color="red"> id</font>=<font color="green">"useradministrationFlow"</font>
+  <font color="#0000aa">&gt;</font><br/>
+
+    <font color="#0000aa">    &lt;</font>
+    <font color="#0000ff">views</font>
+    <font color="#0000aa">&gt;</font><br/>
+
+      <font color="#0000aa">      &lt;</font>
+      <font color="#0000ff">view</font>
+      <font color="#0000aa">&gt;</font>/page/useradmin.*<font color="#0000aa">&lt;</font><font color="#0000ff">/view</font>
+      <font color="#0000aa">&gt;</font><br/>
+
+    <font color="#0000aa">    &lt;</font>
+    <font color="#0000ff">/views</font>
+    <font color="#0000aa">&gt;</font><br/>
+
+    <font color="#0000aa">    &lt;</font>
+    <font color="#0000ff">attributes</font>
+    <font color="#0000aa">&gt;</font><br/>
+
+      <font color="#0000aa">      &lt;</font>
+      <font color="#0000ff">attribute</font>
+      <font color="#0000aa">&gt;</font>useradminBean<font color="#0000aa">&lt;</font><font color="#0000ff">/attribute</font>
+	  <font color="#0000aa">&gt;</font><br/>
+
+      <font color="#0000aa">      &lt;</font>
+      <font color="#0000ff">attribute</font>
+      <font color="#0000aa">&gt;</font>secureBean<font color="#0000aa">&lt;</font><font color="#0000ff">/attribute</font>
+      <font color="#0000aa">&gt;</font><br/>
+
+    <font color="#0000aa">    &lt;</font>
+    <font color="#0000ff">/attributes</font>
+    <font color="#0000aa">&gt;</font><br/>
+
+  <font color="#0000aa">  &lt;</font>
+  <font color="#0000ff">/flow</font>
+  <font color="#0000aa">&gt;</font><br/>
+
+<font color="#0000aa">&lt;</font>
+<font color="#0000ff">/flows</font>
+<font color="#0000aa">&gt;</font>
+</pre>
+</div>
+		</source>
+		<p>
+			Every View starting with "/page/useradmin" is part of the flow.
+		</p>
+		<p>
+			You can enter and leave a flow at any point. ploinFaces removes all
+			attributes from the session, which are defined with the flow.
+		</p>
+	</subsection>
+
+
+  </body>
+</document>

@@ -1,0 +1,235 @@
+/**
+ * Copyright [2008] [PLOIN GmbH -> http://www.ploin.de]
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ */
+package org.ploin.web.flow;
+
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * $LastChangedBy$<br>
+ * $Revision$<br>
+ * $Date$<br>
+ */
+public class Flow implements Serializable{
+
+	private static final long serialVersionUID = -7628817559417313411L;
+	private String flowId = "";
+	private Set<String> views = new HashSet<String>();
+	private Set<String> attributes = new HashSet<String>();
+	private Set<String> ignoreViews = new HashSet<String>();
+	private Set<String> includeAuthoritys = new HashSet<String>();
+	private Set<String> excludeAuthoritys = new HashSet<String>();
+	private Set<String> subFlows = new HashSet<String>();
+	private Boolean disableUrlNavigation = Boolean.FALSE;
+	private String authoritySource = null;
+	private String appName = null;
+	private String accessDeniedPage = null;
+	private String beforeFlowAction = null;
+	private String afterFlowAction = null;  
+	private String beforeLifecycleAction = null;
+	private String afterLifecycleAction = null;
+
+
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Flow flow = (Flow) o;
+		if (flowId != null ? !flowId.equals(flow.flowId) : flow.flowId != null) return false;
+		return true;
+	}
+
+	public int hashCode() {
+		return (flowId != null ? flowId.hashCode() : 0);
+	}
+
+	public Set<String> getSubFlows() {
+		return subFlows;
+	}
+
+	public void setSubFlows(Set<String> subFlows) {
+		this.subFlows = subFlows;
+	}
+
+	public boolean addSubFlow(String flowId){
+		return getSubFlows().add(flowId);
+	}
+
+	public String getAfterFlowAction() {
+		return afterFlowAction;
+	}
+
+	public void setAfterFlowAction(String afterFlowAction) {
+		this.afterFlowAction = afterFlowAction;
+	}
+
+	public String getAfterLifecycleAction() {
+		return afterLifecycleAction;
+	}
+
+	public void setAfterLifecycleAction(String afterLifecycleAction) {
+		this.afterLifecycleAction = afterLifecycleAction;
+	}
+
+	public String getBeforeFlowAction() {
+		return beforeFlowAction;
+	}
+
+	public void setBeforeFlowAction(String beforeFlowAction) {
+		this.beforeFlowAction = beforeFlowAction;
+	}
+
+	public String getBeforeLifecycleAction() {
+		return beforeLifecycleAction;
+	}
+
+	public void setBeforeLifecycleAction(String beforeLifecycleAction) {
+		this.beforeLifecycleAction = beforeLifecycleAction;
+	}
+
+	public Set<String> getViews() {
+		return views;
+	}
+	
+	public void setViews(Set<String> views) {
+		this.views = views;
+	}
+	
+	public boolean addView(String view){
+		if (getViews() == null){
+			setViews(new HashSet<String>());
+		}
+		return getViews().add(view);
+	}
+	
+	public Set<String> getAttributes() {
+		return attributes;
+	}
+	
+	public void setAttributes(Set<String> attributes) {
+		this.attributes = attributes;
+	}
+	
+	public boolean addAttribute(String attribute){
+		if (getAttributes() == null){
+			setAttributes(new HashSet<String>());
+		}
+		return getAttributes().add(attribute);
+	}
+
+	public boolean viewContains(String view) {
+		return views.contains(view);
+	}
+
+	public boolean attributeContains(String attribute) {
+		return attributes.contains(attribute);
+	}
+
+	public Set<String> getIncludeAuthoritys() {
+		return includeAuthoritys;
+	}
+
+	public void setIncludeAuthoritys(Set<String> includeAuthoritys) {
+		this.includeAuthoritys = includeAuthoritys;
+	}
+	
+	public boolean addIncludeAuthority(String auth){
+		if (getIncludeAuthoritys() == null){
+			setIncludeAuthoritys(new HashSet<String>());
+		}
+		return getIncludeAuthoritys().add(auth);
+	}
+	
+	public boolean includeContains(String auth){
+		return includeAuthoritys.contains(auth);
+	}
+
+	public Set<String> getExcludeAuthoritys() {
+		return excludeAuthoritys;
+	}
+
+	public void setExcludeAuthoritys(Set<String> excludeAuthoritys) {
+		this.excludeAuthoritys = excludeAuthoritys;
+	}
+	
+	public boolean addExcludeAuthority(String auth){
+		if (getExcludeAuthoritys() == null){
+			setExcludeAuthoritys(new HashSet<String>());
+		}
+		return getExcludeAuthoritys().add(auth);
+	}
+	
+	public boolean excludeContains(String auth){
+		return excludeAuthoritys.contains(auth);
+	}
+
+	public String getAuthoritySource() {
+		return authoritySource;
+	}
+
+	public void setAuthoritySource(String authoritySource) {
+		this.authoritySource = authoritySource;
+	}
+
+    public String getAppName() {
+        return appName;
+    }
+
+    public void setAppName(String appName) {
+        this.appName = appName;
+    }
+
+    public String getAccessDeniedPage() {
+        return accessDeniedPage;
+    }
+
+	public void setAccessDeniedPage(String accessDeniedPage) {
+		this.accessDeniedPage = accessDeniedPage;
+	}
+
+	public String getFlowId() {
+		return flowId;
+	}
+
+	public void setFlowId(String flowId) {
+		this.flowId = flowId;
+	}
+
+	public Set<String> getIgnoreViews() {
+	return ignoreViews;
+}
+
+	public void setIgnoreViews(Set<String> ignoreViews) {
+		this.ignoreViews = ignoreViews;
+	}
+
+	public boolean addIgnoreView(String view){
+		if (getIgnoreViews() == null){
+			setIgnoreViews(new HashSet<String>());
+		}
+		return getIgnoreViews().add(view);
+	}
+
+	public Boolean getDisableUrlNavigation() {
+		return disableUrlNavigation;
+	}
+
+	public void setDisableUrlNavigation(Boolean disableUrlNavigation) {
+		this.disableUrlNavigation = disableUrlNavigation;
+	}
+	
+}

@@ -1,0 +1,49 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		   elementFormDefault="qualified"
+		   targetNamespace="http://www.ploinfaces.org/schema"
+		   xmlns="http://www.ploinfaces.org/schema" >
+  <xs:element name="flows" type="flowsType"/>
+  <xs:complexType name="flowsType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="authoritySource" minOccurs="0" maxOccurs="1"/>
+      <xs:element type="xs:string" name="accessDeniedPage" minOccurs="0" maxOccurs="1"/>
+      <xs:element type="viewsForAllFlowsType" name="viewsForAllFlows" minOccurs="0" maxOccurs="1"/>
+      <xs:element type="flowType" name="flow" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="flowType">
+    <xs:sequence>
+      <xs:element type="viewsType" name="views" minOccurs="1" maxOccurs="1"/>
+      <xs:element type="attributesType" name="attributes" minOccurs="1" maxOccurs="1"/>
+      <xs:choice>
+	  	<xs:element type="includeAuthoritiesType" name="includeAuthorities" minOccurs="0" maxOccurs="1"/>
+		<xs:element type="excludeAuthoritiesType" name="excludeAuthorities" minOccurs="0" maxOccurs="1"/>
+	  </xs:choice>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="includeAuthoritiesType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="authority" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="excludeAuthoritiesType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="authority" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="viewsForAllFlowsType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="view" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="viewsType">
+    <xs:sequence>
+      <xs:element name="view" maxOccurs="unbounded" minOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="attributesType">
+    <xs:sequence>
+      <xs:element name="attribute" minOccurs="1" maxOccurs="unbounded" />              
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

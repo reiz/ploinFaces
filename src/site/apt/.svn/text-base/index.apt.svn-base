@@ -1,0 +1,31 @@
+ploinFaces
+
+  With ploinFaces you can define a flow for a JavaServerFaces-Webapplication. A flow contains views and attributes.
+  If you leave the flow, the attributes will be removed from the http-session. It works with the 
+  standard http-session scope. You need no special conversation scope. 
+  There are no UI-Components in this library! PloinFaces contains little helpers for the developing of JSF-Applications 
+  and makes periodic works much easier.
+
+
+* Features
+
+  * 70,7 procent code coverage with TestNG and clover2. 118 Testcases. 
+
+  * Flow/Conversation managing through session handling.
+
+  * With ploinFaces you can controll the access to a complete Flow. You could define that just admins
+    are allowed to step into a flow in the user administration.
+
+  * very small footprint.
+
+  * very pragmatic and easy to learn.
+
+  * You have no dependencys to any IoC-Containers like Spring.
+    But you can use it together with Spring, Guice or Pico if you want.
+
+  * PloinFaces offers you a very good BackNavigationHandler.
+
+  * With ploinFaces you don't need more navigationrules in your faces-config.xml.
+
+  * PloinFaces offers you a BaseBean with a lot of convenient methods which can extend your managedBeans.
+

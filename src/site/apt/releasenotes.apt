@@ -1,0 +1,204 @@
+Release Notes
+
+  Here you find the release notes.
+
+* from 2.1 to 2.2 (22 April 2010)
+
+ * memory opts. 
+
+* from 2.1 to 2.1 (22 April 2010)
+
+ * Some litle BugFixes and opts. for the NavigationHandler
+
+* from 1.6 to 2.0 (18 March 2010)
+
+ * Simplify the BaseMessages
+
+ * Adding two methods for setting DetailSuffix and SummarySuffix in BaseMessages.
+
+* from 1.5 to 1.6 (18 January 2010)
+
+  * BugFix for NavigationHandler. If you used version 1.5 together with JSF 2.0 then the h:link did not work. This Bug is now fixed.
+
+  * More methods in the BaseBean. For example "addInfoMessageText(String summary, String detail)" ... see javaDoc.
+
+  * Refactored a lot of variables for clean code.
+
+  * Improved docu 
+
+* from 1.4.6 to 1.5 (10 January 2010)
+
+  * Migration from JSF 1.2 to JSF 2.0
+
+* from 1.4.5 to 1.4.6 (12 November 2009)
+
+ * Compiling with JDK 5.0
+
+ * Litle Refactorings in Code
+
+* from 1.4.4 to 1.4.5 (22 June 2009)
+
+ * BugFix in BaseBean for getIntegerFromRequestMap and getLongFromRequestMap.
+
+ * new method in BaseBean: removeFlow(String flowId).
+
+* from 1.4.3 to 1.4.4 (27 Mai 2009)
+
+ * All Validators extends the PloinJsfValidator
+
+ * BugFix: All validators fetch the ResourceBudle with the locale set in the viewRoot.
+
+ * BaseBean: adding three methods:
+
+  * String getStringFromRequestMap(String key)
+
+  * Integer getIntegerFromRequestMap(String key)
+
+  * Long getLongFromRequestMap(String key)
+
+ * BaseBean: the method getStringFromResourceBundle(String key) returns not null if there is
+   no value for the given key. In this case the method returns "???key???". 
+
+* from 1.4.2 to 1.4.3
+
+ * BugFix: Replacing ServletRequestListener through ServletContextListener in PloinFacesListener
+
+* from 1.4.1 to 1.4.2
+
+ * BugFix: If an error-page was registered in the deployment-descriptor for the error code 500
+   and in the ploinFlows.xml the tag "disableUrlNavigation" was true, the error-page
+   was never rendered, because the urlNavigation was disabled. We have changed the behavior
+   of the tag "disableUrlNavigation". If the destination-page is in the set of "ignoreViews" the
+   urlNavigation is allowed. So you have to regist the error-pages in the ploinFlows.xml in
+   the tag "ignoreViews".
+
+ * Workarround for two security lecks in IceFaces 1.7.2 and IceFaces 1.8
+
+ * More doc. 
+
+* from 1.4 to 1.4.1
+
+ * Sample WebApplication with MyFaces, RichFaces, ploinFaces, Spring, Hibernate and HsqlDB. 
+
+ * More JavaDoc.
+
+ * Better debug-output for the BaseBean.
+
+ * FlowControl: Replacing error-logs through debug-log.
+
+ * New KickStart Tutorial.
+
+ * new xml-schema.
+
+* from 1.3.1 to 1.4
+
+ * Simplify configuration with PloinFacesListener. This listener is responsible for the registration of the phaseListener. 
+
+ * Workaround for security leak in IceFaces 1.7.2. With the block servlet in IceFaces you can fetch files under the WEB-INF directory. The "BlockSaveListener" in ploinFaces 1.4 is a workaround for this security leak.
+
+ * BugFix in FlowControl.isViewInSet(Set<String> set, String view).
+
+ * More JavaDoc.
+
+ * More Tests with TestNG and clover (70,7 procent code coverage with 115 testcases). 
+
+* from 1.3 to 1.3.1
+
+ * FlowDefinition: With <disableUrlNavigation>true<disableUrlNavigation> you can disable the urlNavigation. 
+
+ * BaseBean: adding method - public static HttpServletResponse getResponse().
+
+* from 1.2 to 1.3
+
+ * More javaDoc. 
+
+ * BaseBean: adding method - public String getViewRootId().
+
+ * BaseBean: adding method - public UIViewRoot getViewRoot().
+
+ * BaseBean: adding method - public void setLocale(Locale locale). Set a new locale in the viewRoot.
+
+ * BaseBean: adding method - public Locale getLocale().
+
+ * Flows: adding a new tag <ignoreViews>. A set of views should be ignored. For example error pages like "/page/error/.*". 
+
+ * Flows: adding a new tag <afterFlowAction>. An EL-Expression that will be executed after the user is leaving the flow. 
+
+ * Flows: adding a new tag <afterLifecycleAction>. An EL-Expression that will be executed after the
+   JSF-Lifecycle (after the response is rendered). For Example "#{useradminBean.clear}". 
+
+ * Flows: adding a new tag <subFlows>.
+
+* from 1.1 to 1.2
+
+ * FlowDefinition: an attribute id is required for the tag <flow>. For example <flow id="registration"> ...
+
+ * FlowDefinition: adding a new xml schema file for ploinFlows.xml (http://www.ploinfaces.org/schema/ploinFlows_1.2.xml.xsd)
+
+ * BaseBean: adding the method - public static String getStringFromResourceBundle(final String key, final String[] params)
+
+ * BaseBean: adding the method - public static String getStringFromResourceBundleDetail(String key, final String[] params);
+
+ * BaseBean: improving the Exception handling.
+
+ * Reference Guide: describing the logging mechanism of ploinFaces.
+
+ * Tests: replacing JUnit by TestNG.
+
+* from 1.0 to 1.1
+
+ * FlowDefinition: adding a xml schema file for ploinFlows.xml (http://www.ploinfaces.org/schema/ploinFlows.xml.xsd).
+
+ * FlowDefinition: With <viewsForAllFlows> you can define views should be in all your flows. This is good for error-pages.
+
+ * BaseBean: adding the method - public void addHTMLMessageFromBundle(String compId, FacesMessage.Severity severity, String key, String[] params)
+
+ * BaseBean: adding the method - public void addHTMLMessageFromBundle(String compId, FacesMessage.Severity severity, String key)
+
+ * documentation: more javaDoc for the BaseBean
+
+ * documentation: GUI-Components
+
+ * maven2 integration: In the doc we describe how you can integrate ploinFaces with maven2
+
+ * documentation: replaced the German image in section "BackNavigation" through an English image.
+
+* from 0.9 to 1.0
+
+ * BackNavigationHandler: replace Array of String and arraycopy(..) with java.util.Stack
+
+ * BackNavigationHandler: In the last version it was possible to navigate back with
+   the outcome "back". In the new version you can navigate two steps back with the
+   outcome "backback" and three steps back with the outcome "backbackback".
+
+ * moved the securityCode (authority) from afterPhase5 to beforePhase6.
+
+ * improved log output for the security code.
+
+ * in phase6 the fromViewId will be not be removed from the session. In the new version we set
+   the toViewId as fromViewId in the session, after phase 6. If there is a redirect we
+   always know from where the request is coming.
+
+ * in the pageFlow.xml you can define a "accessDeniedPage". If you have a flow with
+   includeAuthority or excludeAuthority and an non authorized request tries to enter
+   this flow, it will passed to the "accessDeniedPage". If there is no "accessDeniedPage"
+   defined, it will stay on the old view, like in the version 0.9.1.
+
+ * the new version measures the time from beforePhase1 to afterPhase6 and writes it out
+   with log.info().
+
+ * BugFix for NumberOnlyValidator.
+
+ * All Validators use log4j for log and error output.
+
+ * BaseBean: adding a new method for parameterized HTMLMessage
+   void addHTMLMessageFromBundle(FacesMessage.Severity severity, String key, String[] params)
+
+ * BaseBean: adding a new method "getLifecycleId()". In the first phase ploinFaces generate
+   an ID for the lifecycle. With this id you can implement the "oneUpdatePerLifecycle" Pattern.
+
+ * NavigationHandler: With the new NavigationHandler you don't need navigation-rules in
+   your faces-config.xml. If your outcome starts with "->" ploinFaces looks for a viewId
+   named like your outcome without "->". For example, your outcome is "->/page/welcome.xhtml"
+   than ploinFaces will navigate to /page/welcome.xhtml". You can navigate from
+   your ManagedBean to your xhtml site directly, without navigation rules.
