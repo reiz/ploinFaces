@@ -20,19 +20,21 @@
 			<url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
 		</license>
 	</licenses>
+	<scm>
+	    <url>https://github.com/reiz/ploinFaces</url>
+	</scm>
 	<developers>
 		<developer>
 			<id>r.reiz</id>
 			<name>Robert Reiz</name>
-			<email>reiz@ploin.de</email>
 			<roles>
 				<role>Project Manager</role>
 				<role>Architect</role>
 			</roles>
-			<url>http://www.robert-reiz.de</url>
-			<organization>PLOIN GmbH</organization>
-			<organizationUrl>http://www.ploin-gmbh.de</organizationUrl>
-			<timezone>+1</timezone>
+			<url>http://robert-reiz.com</url>
+			<organization>VersionEye GmbH</organization>
+			<organizationUrl>http://versioneye.com</organizationUrl>
+			<timezone>+8</timezone>
 		</developer>
 		<developer>
 			<id>j.schwarz</id>
@@ -55,15 +57,6 @@
 			</roles>
 			<organization>PLOIN GmbH</organization>
 			<organizationUrl>http://www.ploin-gmbh.de</organizationUrl>
-			<timezone>+1</timezone>
-		</developer>
-		<developer>
-			<id>m.kryzka</id>
-			<name>Marius Kryzka</name>
-			<email>marius@kryzka.net</email>
-			<roles>
-				<role>Developer</role>
-			</roles>
 			<timezone>+1</timezone>
 		</developer>
 	</developers>
