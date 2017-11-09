@@ -9,5 +9,5 @@ With ploinFaces you can define a flow/conversation for a JSF-App. A flow contain
 Documentation: [ploinfaces.org](http://www.ploinfaces.org/)
 Kickstart: [Kickstart Tutorial](http://www.ploinfaces.org/kickstart.html)
 
-- END - 
+
 
